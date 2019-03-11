@@ -1,0 +1,104 @@
+\documentclass[13pt]{beamer}
+\usetheme{CambridgeUS}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\author{Piyush and Neil}
+\title{BOOTSTRAP AGGREGATION}
+\institute{IIT Hyderabad}
+%\setbeamercovered{transparent} 
+%\setbeamertemplate{navigation symbols}{} 
+%\logo{} 
+%\institute{} 
+%\date{} 
+%\subject{} 
+\begin{document}
+
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{Definition}
+\begin{block}
+
+Bootstrap aggregating, also called \textbf{bagging}, is a machine learning ensemble \textbf{meta-algorithm} designed to improve the \underline{stability} and \underline{accuracy} of machine learning algorithms used in statistical classification and regression. \textbf{\textit{It also reduces variance and helps to avoid overfitting}}. Although it is usually applied to decision tree methods, it can be used with any type of method. Bagging is a special case of the model averaging approach.
+
+\end{block}
+\end{frame}
+%\begin{frame}
+%\tableofcontents
+%\end{frame}
+
+\begin{frame}{A brief introduction on \textbf{Ensemble Method}}
+
+\begin{block}
+
+\textbf{Ensemble methods} are machine learning techniques that combines several base models in order to produce one optimal predictive model. Eg: \underline{Bagging} and \underline{random forests}.
+We will talk about bagging here.
+\end{block} \vspace{16pt}
+
+\begin{block}{Difference between Bagging and Bootstrap}
+Bootstrapping is a sampling technique and Bagging is an machine learning ensemble based on bootstrapped sample.
+
+\end{block}
+
+
+\end{frame}
+
+\begin{frame}{Diagrammatic Representation}
+\includegraphics[scale=0.35]{pic1}
+
+\end{frame}
+
+\begin{frame}{Technique Description}
+\begin{block}
+
+Given a standard training set $D$ of size $n$, bagging generates $m$ new training sets $D_i$, each of size $n^{'}$, by sampling from $D$ uniformly and with replacement. By sampling with replacement, some observations may be repeated in each $D_i$. If $n^{'}=n$, then for large $n$ the set $D_i$ is expected to have the fraction $(1 - 1/e)$ (approx $63.2\%)$ of the unique examples of $D$, the rest being duplicates. This kind of sample is known as a bootstrap sample. The $m$ models are fitted using the above $m$ bootstrap samples and combined by averaging the output (for regression) or voting (for classification). 
+\end{block}
+
+\end{frame}
+
+
+\begin{frame}{Why Bagging?}
+\begin{block}
+
+Bagging leads to \underline{improvements for unstable procedures}, which include, for example, artificial neural networks, classification and regression trees, and subset selection in linear regression. \vspace{16pt}
+\includegraphics[scale=0.3]{pic2}
+\end{block}
+
+\end{frame}
+
+\begin{frame}{Bagging in Regression}
+Consider first the regression problem. Suppose we fit a model to our
+training data $Z = {(x_1 , y_1 ), (x_2 , y_2 ), . . . , (x_N , y_N )}$, obtaining the predic-
+tion $f(x)$ at input $x$. Bootstrap aggregation or bagging averages this predic-
+tion over a collection of bootstrap samples, thereby reducing its variance.
+For each bootstrap sample $Z^{*b} , b = 1, 2, . . . , B,$ we fit our model, giving
+prediction $f^{*b}(x)$.
+\\The bagging estimate is defined by:\\ \vspace{20pt}
+\hspace*{30mm} \Large $f_{bag}(x) = \frac{1}{B}\sum_{b=1}^{B} f^{*b}(x)$
+\end{frame}
+
+\begin{frame}{Example solved using Bagging}
+\begin{block}{\large \textbf{Algorithm}}
+\begin{itemize}
+\item Step1: From training dataset $D$(having $n_1$ elements), $m$ distinct random sub datasets were chosen with elements $n_2<n_1$.
+\item Step2: Now, $m$ distinct decision trees were trained using these $m$ distinct sub data sets.
+\item Step3: after training the decision trees were fed input and response was recorded and the final response was calculated as mean$(f(x))$. This final output had low variance. This algorithm can be used to reduce variance and train unstable base learning algorithms.
+
+
+
+\end{itemize}
+\end{block}
+
+
+\end{frame}
+
+\begin{frame}{Bagging Example}
+\includegraphics[scale=0.7]{index} \vspace*{5mm}
+\includegraphics[scale=0.6]{pic5}
+\end{frame}
+
+\end{document}
